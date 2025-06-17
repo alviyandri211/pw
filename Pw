@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fajar Nur Ramadhan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f0f2f5;
+      color: #333;
+    }
+
+    .profile-container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+
+    .header-bg {
+      background: linear-gradient(135deg, #f16363, #3b82f6);
+      height: 200px;
+    }
+
+    .profile-photo-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: -70px;
+    }
+
+    .profile-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 5px solid white;
+      object-fit: cover;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .header-text {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .header-text h1 {
+      font-size: 2rem;
+      color: #111827;
+    }
+
+    .subtitle {
+      color: #6b7280;
+      font-size: 1rem;
+      margin: 0.25rem 0;
+    }
+
+    .header-text p a {
+      color: #7725eb;
+      text-decoration: none;
+    }
+
+    .header-text p a:hover {
+      text-decoration: underline;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .action-buttons button {
+      padding: 10px 20px;
+      background: #f63b3e;
+      color: white;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .action-buttons button:hover {
+      background: #6025eb;
+    }
+
+    #content {
+      padding: 20px;
+    }
+
+    .content-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .content-card h2 {
+      color: #1f2937;
+      margin-bottom: 10px;
+    }
+
+    .content-card p {
+      color: #4b5563;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .profile-photo {
+        width: 100px;
+        height: 100px;
+      }
+
+      .header-text h1 {
+        font-size: 1.5rem;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <div class="header-bg"></div>
+
+    <div class="profile-photo-wrapper">
+      <img src="https://i.pinimg.com/736x/67/8a/5d/678a5db920a7faa44193f409e0e82a79.jpg" alt="profile" class="profile-photo" />
+    </div>
+
+    <div class="header-text">
+      <h1>Fajar Nur Ramadhan</h1>
+      <p class="subtitle">He/Him • Web Developer</p>
+      <p>Jakarta, Indonesia • <a href="https://fajar.nr.com">fajar.nr.com</a></p>
+      <p><strong>fajarnr bumi Solusi</strong> — Universitas Ipwija</p>
+    </div>
+
+    <div class="action-buttons">
+      <button>Open to work</button>
+      <button>Add profile section</button>
+      <button>Enhance profile</button>
+    </div>
+
+    <div id="content"></div>
+
+    <div class="content-card">
+      <h3>Sosial Media</h3>
+      <ul>
+        <li><strong>LinkedIn:</strong> <a href="http://linkedin.com/in/fajarnr">linkedin.com/in/fajarnr</a></li>
+        <li><strong>Credly:</strong> <a href="https://www.credly.com/users/fajar-nr">credly.com/users/fajar-nr</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script type="module">
+    // Import Supabase client dari CDN
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+    const SUPABASE_URL = 'https://jstmbkuiqlkjsyldyssd.supabase.co'
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzdG1ia3VpcWxranN5bGR5c3NkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk1Mjc1NTEsImV4cCI6MjA2NTEwMzU1MX0.DS4v6ctJ75JNa7QB-3wcKDQlJ5wua9qj1v6qXeFLbTc'
+
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+    const content = document.getElementById('content')
+
+    async function loadData() {
+      const { data, error } = await supabase.from('web').select('*').order('id')
+      if (error) {
+        alert('Error loading data: ' + error.message)
+        return
+      }
+
+      let out = ''
+      data.forEach(row => {
+        out += `
+          <div class="content-card">
+            <h2>${row.judul}</h2>
+            <p>${row.isi}</p>
+          </div>
+        `
+      })
+
+      content.innerHTML = out
+    }
+
+    window.addEventListener('DOMContentLoaded', loadData)
+  </script>
+</body>
+</html>
