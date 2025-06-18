@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sibad Ultah</title>
+  <title>Selamat Ulang Tahun!</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -104,13 +104,16 @@
 </head>
 <body>
 
+<!-- Musik dari GitHub -->
 <audio id="bg-music" loop>
-  <source src="Connie_Francis_-_Pretty_Little_Baby.mp3" type="audio/mpeg">
+  <source src="https://raw.githubusercontent.com/alviyandri211/media/main/Connie_Francis_-_Pretty_Little_Baby.mp3" type="audio/mpeg">
+  Browsermu tidak mendukung pemutar audio.
 </audio>
 
 <div class="container">
+  <!-- Login -->
   <div id="login-box" class="slide" style="display: block;">
-    <h2>LOGIN DOLOOOOO</h2>
+    <h2>LOGIN DOLOOOOOO</h2>
     <input type="text" id="username" placeholder="Username" />
     <input type="password" id="password" placeholder="Password" />
     <br>
@@ -118,64 +121,69 @@
     <div id="message" class="message"></div>
   </div>
 
+  <!-- Slide 1 -->
   <div id="slide1" class="slide">
     <div class="cake">🎂🎉</div>
     <h2>Selamat Ulang Tahun Sayang</h2>
-    <p>Semoga hari-harimu penuh kebahagiaan, Panjang umur, Sehat selalu, Ngambeknya kurangin, Dilancarkan rezekinya. 🎁</p>
-    <p>KALO DITANYA ITU JAWAB!!! JANGAN GATAU GATAU 😆</p>
+    <p>Semoga hari-harimu penuh kebahagiaan, panjang umur, sehat selalu, ngambeknya kurangin, rezekinya dilancarkan 🎁</p>
+    <p>KALO DITANYA ITU DIJAWAB!!! Jangan gatau-gatau 😆</p>
     <div class="cake">🎈🎊</div>
     <button onclick="changeSlide(2)">➡️ Lanjut</button>
   </div>
 
+  <!-- Slide 2 -->
   <div id="slide2" class="slide">
     <div class="cake">AKU MAH KUAT CENAH</div>
     <h2>Udah Umur 22</h2>
     <p>Makin tua, tapi tinggi segitu" aja 😜</p>
     <p>Ngambeknya kek umur 2 tahun 😅</p>
-    <p>Hidup kadang di bawah kadang juga dibawah, kagak naik-naik ini kita awkawkawkakwawk😭</p>
+    <p>Hidup kadang di bawah kadang juga dibawah, kagak naik-naik ini kita akwkawkawkawk 😭</p>
     <div class="cake">💖🎊</div>
     <button onclick="changeSlide(1)">⬅️ Kembali</button>
     <button onclick="changeSlide(3)">➡️ Lanjut</button>
   </div>
 
+  <!-- Slide 3 -->
   <div id="slide3" class="slide">
     <div class="cake">📸🎁</div>
     <h2>Bonus nih yangg</h2>
-    <p>Gada gambar yang komuk lagi</p>
-    <img src="WhatsApp-Image-2025-06-18-at-14.55.15-_1_.jpg" alt="Gambar 1" />
+    <img src="https://raw.githubusercontent.com/alviyandri211/media/main/WhatsApp%20Image%202025-06-18%20at%2014.55.15.jpg" alt="Gambar 1" />
     <div class="cake">🎀💘</div>
     <button onclick="changeSlide(2)">⬅️ Kembali</button>
     <button onclick="changeSlide(4)">➡️ Lagi</button>
   </div>
 
+  <!-- Slide 4 (diganti dengan teks saja) -->
   <div id="slide4" class="slide">
-    <div class="cake">🎉📷</div>
-    <h2>Nambah dah</h2>
-    <p>Satu lagi Bonus 💗</p>
-    <img src="WhatsApp Image 2025-06-18 at 14.55.15.jpg" alt="Gambar 2" />
     <div class="cake">💌💐</div>
+    <h2>Pesan ROOORRRRRR 😘</h2>
+    <p><em>sayangg aku truss ya jgn ngambek bae udah efrot banget inii, lopyuu pendekk</em></p>
+    <div class="cake">💖💗</div>
     <button onclick="changeSlide(3)">⬅️ Kembali</button>
     <button onclick="changeSlide(5)">➡️ Lagi</button>
   </div>
 
+  <!-- Slide 5 -->
   <div id="slide5" class="slide">
-    <div class="cake">🎉📷</div>
-    <h2>PENTOLAN TANJUNG SARI NIH BOSS</h2>
-    <p>Habisinnn, bacokinnnn</p>
-    <img src="WhatsApp Image 2025-06-18 at 15.24.37.jpg" alt="Gambar 3" />
+    <div class="cake">🔥💪</div>
+    <h2>Pentolan Tanjung Sari Nih Boss Senggol Dong!</h2>
+    <p>Habisinnn! Bacokinnn! 🔥</p>
+    <img src="https://raw.githubusercontent.com/alviyandri211/media/main/WhatsApp%20Image%202025-06-18%20at%2015.24.37.jpg" alt="Gambar 3" />
     <div class="cake">🎈💞</div>
     <button onclick="changeSlide(4)">⬅️ Kembali</button>
-    <button onclick="changeSlide(6)">➡️ Lanjut</button>
+    <button onclick="changeSlide(6)">➡️ Terakhir</button>
   </div>
 
+  <!-- Slide 6 -->
   <div id="slide6" class="slide">
-    <h2>Sekarang gini aja dah gausa songong lu</h2>
-    <div class="cake">Love u Sayanggg 💕</div>
+    <h2>Udah intinya gini aja dah sekarang gausah songong lu</h2>
+    <div class="cake">Love u Sayanggg 💖</div>
     <button onclick="changeSlide(5)">⬅️ Kembali</button>
   </div>
 </div>
 
 <script>
+  // Efek salju
   function createSnowflake() {
     const snowflake = document.createElement("div");
     snowflake.classList.add("snowflake");
@@ -199,10 +207,7 @@
       message.textContent = "";
       document.getElementById("login-box").style.display = "none";
       document.getElementById("slide1").style.display = "block";
-      const music = document.getElementById("bg-music");
-      music.play().catch(() => {
-        alert("Klik layar sekali agar musik bisa diputar!");
-      });
+      document.getElementById("bg-music").play();
     } else {
       message.textContent = "Username atau password salah!";
       message.className = "message error";
@@ -218,4 +223,3 @@
 
 </body>
 </html>
-
