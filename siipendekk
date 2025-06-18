@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sibaddddddddddddddddddd</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #36d1dc, #5b86e5);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      overflow-y: auto;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      padding: 30px;
+      text-align: center;
+      margin: 40px 0;
+      z-index: 10;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #5b86e5;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 10px 5px;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .error {
+      color: red;
+    }
+
+    .slide {
+      display: none;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .cake {
+      font-size: 40px;
+      margin: 20px 0;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .snowflake {
+      color: white;
+      font-size: 1.5em;
+      position: fixed;
+      top: -10px;
+      z-index: 1;
+      user-select: none;
+      pointer-events: none;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<audio id="bg-music" loop>
+  <source src="c:\Users\no name\Downloads\Connie_Francis_-_Pretty_Little_Baby.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+  <div id="login-box" class="slide" style="display: block;">
+    <h2>LOGIN DOLOOOOO</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <br>
+    <button onclick="login()">Login</button>
+    <div id="message" class="message"></div>
+  </div>
+
+  <div id="slide1" class="slide">
+    <div class="cake">🎂🎉</div>
+    <h2>Selamat Ulang Tahun Sayang</h2>
+    <p>Semoga hari-harimu penuh kebahagiaan, Panjang umur, Sehat selalu, Ngambeknya kurangin, Dilancarkan rezekinya. 🎁</p>
+    <p>KALO DITANYA ITU JAWAB!!! JANGAN GATAU GATAU, jangan ke kebun raya bogor singanya insecure 😆</p>
+    <div class="cake">🎈🎊</div>
+    <button onclick="changeSlide(2)">➡️ Lanjut</button>
+  </div>
+
+  <div id="slide2" class="slide">
+    <div class="cake">AKU MAH KUAT CENAH</div>
+    <h2>Udah Umur 22</h2>
+    <p>Makin tua, tapi tinggi segitu" aja 😜</p>
+    <p>Ngambeknya kek umur 2 tahun 😅</p>
+    <p>Hidup emang kadang dibawah kadang juga dibawah, kgk diatas-atas ini kita :D wkakwkwakwaakwkaw</p>
+    <div class="cake">💖🎊</div>
+    <button onclick="changeSlide(1)">⬅️ Kembali</button>
+    <button onclick="changeSlide(3)">➡️ Lanjut</button>
+  </div>
+
+  <div id="slide3" class="slide">
+    <div class="cake">📸🎁</div>
+    <h2>Bonus nih yangg</h2>
+    <p>Gada gambar yang komuk lagi </p>
+    <img src="c:\Users\no name\Downloads\WhatsApp-Image-2025-06-18-at-14.55.15-_1_.jpg" alt="Gambar 1" />
+    <div class="cake">🎀💘</div>
+    <button onclick="changeSlide(2)">⬅️ Kembali</button>
+    <button onclick="changeSlide(4)">➡️ Lagi</button>
+  </div>
+
+  <div id="slide4" class="slide">
+    <div class="cake">🎉📷</div>
+    <h2>Nambah dah</h2>
+    <p>Satu lagi Bonus 💗</p>
+    <img src="c:\Users\no name\Downloads\WhatsApp Image 2025-06-18 at 14.55.15.jpg" alt="Gambar 2" />
+    <div class="cake">💌💐</div>
+    <button onclick="changeSlide(3)">⬅️ Kembali</button>
+    <button onclick="changeSlide(5)">➡️ Lagi</button>
+  </div>
+
+  <div id="slide5" class="slide">
+    <div class="cake">🎉📷</div>
+    <h2>PENTOLAN TANJUNG SARI NIH BOSS SENGGOL DONG</h2>
+    <p>Habisinnn, bacokinnnn</p>
+    <img src="c:\Users\no name\Downloads\WhatsApp Image 2025-06-18 at 15.24.37.jpg" alt="Gambar 3" />
+    <div class="cake">🎈💞</div>
+    <button onclick="changeSlide(4)">⬅️ Kembali</button>
+    <button onclick="changeSlide(6)">➡️ Lanjut</button>
+  </div>
+
+  <div id="slide6" class="slide">
+    <h2>Sekarang intinya gini aja gausah songong lu</h2>
+    <p></p>
+    <div class="cake">Love u Sayanggg</div>
+    <button onclick="changeSlide(5)">⬅️ Kembali</button>
+  </div>
+</div>
+
+<script>
+  function createSnowflake() {
+    const snowflake = document.createElement("div");
+    snowflake.classList.add("snowflake");
+    snowflake.textContent = "❄️";
+    snowflake.style.left = Math.random() * 100 + "vw";
+    snowflake.style.animationDuration = Math.random() * 3 + 2 + "s";
+    snowflake.style.fontSize = Math.random() * 10 + 10 + "px";
+    document.body.appendChild(snowflake);
+    setTimeout(() => snowflake.remove(), 5000);
+  }
+  setInterval(createSnowflake, 200);
+</script>
+
+<script>
+  const slides = ["slide1", "slide2", "slide3", "slide4", "slide5", "slide6"];
+
+  function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    const message = document.getElementById("message");
+
+    if (user === "sibad" && pass === "silitbau") {
+      message.textContent = "";
+      document.getElementById("login-box").style.display = "none";
+      document.getElementById("slide1").style.display = "block";
+      document.getElementById("bg-music").play();
+    } else {
+      message.textContent = "Username atau password salah!";
+      message.className = "message error";
+    }
+  }
+
+  function changeSlide(index) {
+    slides.forEach((id, i) => {
+      document.getElementById(id).style.display = (i === index - 1) ? "block" : "none";
+    });
+  }
+</script>
+
+</body>
+</html>
