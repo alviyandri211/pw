@@ -3,31 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cristian Ari</title>
+  <title>Login & Profile</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Poppins', sans-serif;
       background: #f0f2f5;
       color: #333;
+      min-height: 100vh;
     }
 
-    .profile-container {
-      max-width: 900px;
-      margin: 40px auto;
+    .login-box, .profile-container {
+      max-width: 400px;
+      margin: 100px auto;
       background: white;
+      padding: 20px;
       border-radius: 16px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-      overflow: hidden;
+    }
+
+    .login-box input, .login-box button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .login-box button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
     }
 
     .header-bg {
       background: linear-gradient(135deg, #50e958, #3b82f6);
       height: 200px;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
     }
 
     .profile-photo-wrapper {
@@ -58,16 +79,6 @@
     .subtitle {
       color: #6b7280;
       font-size: 1rem;
-      margin: 0.25rem 0;
-    }
-
-    .header-text p a {
-      color: #7725eb;
-      text-decoration: none;
-    }
-
-    .header-text p a:hover {
-      text-decoration: underline;
     }
 
     .action-buttons {
@@ -75,13 +86,13 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 15px;
-      margin: 20px 0;
+      margin: 20px;
     }
 
     .action-buttons button {
       padding: 10px 20px;
       background: #cc3420;
-      color: rgb(255, 255, 255);
+      color: white;
       border: none;
       border-radius: 999px;
       cursor: pointer;
@@ -93,15 +104,11 @@
       background: #88a537;
     }
 
-    #content {
-      padding: 20px;
-    }
-
     .content-card {
       background: #fff;
       border-radius: 12px;
       padding: 20px;
-      margin-bottom: 20px;
+      margin: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
@@ -141,7 +148,20 @@
   </style>
 </head>
 <body>
-  <div class="profile-container">
+
+  <!-- LOGIN SECTION -->
+  <div class="login-box" id="loginSection">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Username" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+      <div id="errorMsg" class="error"></div>
+    </form>
+  </div>
+
+  <!-- PROFILE SECTION (Initially hidden) -->
+  <div class="profile-container" id="profileSection" style="display: none;">
     <div class="header-bg"></div>
 
     <div class="profile-photo-wrapper">
@@ -161,8 +181,6 @@
       <button>Enhance profile</button>
     </div>
 
-    <div id="content"></div>
-
     <div class="content-card">
       <h3>Sosial Media</h3>
       <ul>
@@ -170,39 +188,61 @@
         <li><strong>Credly:</strong> <a href="https://www.credly.com/users/cristian-ari">credly.com/users/cristian-ari</a></li>
       </ul>
     </div>
+
+    <div id="content"></div>
   </div>
 
+  <!-- SCRIPT -->
   <script type="module">
-    // Import Supabase client dari CDN
-    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+    // Login Logic (case-insensitive)
+    const form = document.getElementById('loginForm');
+    const errorMsg = document.getElementById('errorMsg');
+    const loginSection = document.getElementById('loginSection');
+    const profileSection = document.getElementById('profileSection');
 
-    const SUPABASE_URL = 'https://jstmbkuiqlkjsyldyssd.supabase.co'
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzdG1ia3VpcWxranN5bGR5c3NkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk1Mjc1NTEsImV4cCI6MjA2NTEwMzU1MX0.DS4v6ctJ75JNa7QB-3wcKDQlJ5wua9qj1v6qXeFLbTc'
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value.trim().toLowerCase();
+      const password = document.getElementById('password').value.trim().toLowerCase();
 
-    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-    const content = document.getElementById('content')
+      if (username === 'cristian ari prasena' && password === 'giselwangi121') {
+        loginSection.style.display = 'none';
+        profileSection.style.display = 'block';
+        loadData();
+      } else {
+        errorMsg.textContent = 'Username atau password salah!';
+      }
+    });
+
+    // Supabase client
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+    const SUPABASE_URL = 'https://jstmbkuiqlkjsyldyssd.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzdG1ia3VpcWxranN5bGR5c3NkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk1Mjc1NTEsImV4cCI6MjA2NTEwMzU1MX0.DS4v6ctJ75JNa7QB-3wcKDQlJ5wua9qj1v6qXeFLbTc';
+
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const content = document.getElementById('content');
 
     async function loadData() {
-      const { data, error } = await supabase.from('web').select('*').order('id')
+      const { data, error } = await supabase.from('web').select('*').order('id');
       if (error) {
-        alert('Error loading data: ' + error.message)
-        return
+        content.innerHTML = `<p style="color:red">Gagal memuat data: ${error.message}</p>`;
+        return;
       }
 
-      let out = ''
+      let out = '';
       data.forEach(row => {
         out += `
           <div class="content-card">
             <h2>${row.judul}</h2>
             <p>${row.isi}</p>
           </div>
-        `
-      })
+        `;
+      });
 
-      content.innerHTML = out
+      content.innerHTML = out;
     }
-
-    window.addEventListener('DOMContentLoaded', loadData)
   </script>
 </body>
 </html>
+
