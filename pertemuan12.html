@@ -3,24 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login & Profile</title>
+  <title>Cristian Ari</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
+    html, body {
+      height: 100%;
       font-family: 'Poppins', sans-serif;
       background: #f0f2f5;
       color: #333;
-      min-height: 100vh;
     }
 
     .login-box, .profile-container {
-      max-width: 400px;
-      margin: 100px auto;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       background: white;
-      padding: 20px;
-      border-radius: 16px;
+      padding: 40px 20px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.05);
     }
 
@@ -39,16 +41,10 @@
       cursor: pointer;
     }
 
-    .error {
-      color: red;
-      margin-top: 10px;
-    }
-
     .header-bg {
       background: linear-gradient(135deg, #50e958, #3b82f6);
+      width: 100%;
       height: 200px;
-      border-top-left-radius: 16px;
-      border-top-right-radius: 16px;
     }
 
     .profile-photo-wrapper {
@@ -110,14 +106,16 @@
       padding: 20px;
       margin: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      width: 100%;
+      max-width: 700px;
     }
 
-    .content-card h2 {
+    .content-card h2, .content-card h3 {
       color: #1a2522;
       margin-bottom: 10px;
     }
 
-    .content-card p {
+    .content-card p, ul {
       color: #4b5563;
     }
 
@@ -130,7 +128,7 @@
       margin-bottom: 8px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 768x) {
       .profile-photo {
         width: 100px;
         height: 100px;
@@ -144,6 +142,10 @@
         flex-direction: column;
         align-items: center;
       }
+
+      .content-card {
+        margin: 10px 5px;
+      }
     }
   </style>
 </head>
@@ -156,7 +158,6 @@
       <input type="text" id="username" placeholder="Username" required />
       <input type="password" id="password" placeholder="Password" required />
       <button type="submit">Login</button>
-      <div id="errorMsg" class="error"></div>
     </form>
   </div>
 
@@ -181,6 +182,8 @@
       <button>Enhance profile</button>
     </div>
 
+    <div id="content"></div>
+
     <div class="content-card">
       <h3>Sosial Media</h3>
       <ul>
@@ -188,33 +191,23 @@
         <li><strong>Credly:</strong> <a href="https://www.credly.com/users/cristian-ari">credly.com/users/cristian-ari</a></li>
       </ul>
     </div>
-
-    <div id="content"></div>
   </div>
 
   <!-- SCRIPT -->
   <script type="module">
-    // Login Logic (case-insensitive)
+    // Login logic — tanpa validasi
     const form = document.getElementById('loginForm');
-    const errorMsg = document.getElementById('errorMsg');
     const loginSection = document.getElementById('loginSection');
     const profileSection = document.getElementById('profileSection');
 
     form.addEventListener('submit', function(event) {
       event.preventDefault();
-      const username = document.getElementById('username').value.trim().toLowerCase();
-      const password = document.getElementById('password').value.trim().toLowerCase();
-
-      if (username === 'cristian ari prasena' && password === 'giselwangi121') {
-        loginSection.style.display = 'none';
-        profileSection.style.display = 'block';
-        loadData();
-      } else {
-        errorMsg.textContent = 'Username atau password salah!';
-      }
+      loginSection.style.display = 'none';
+      profileSection.style.display = 'block';
+      loadData();
     });
 
-    // Supabase client
+    // Supabase
     import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
     const SUPABASE_URL = 'https://jstmbkuiqlkjsyldyssd.supabase.co';
@@ -243,6 +236,6 @@
       content.innerHTML = out;
     }
   </script>
+
 </body>
 </html>
-
